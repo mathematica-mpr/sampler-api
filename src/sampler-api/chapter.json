@@ -1,0 +1,145 @@
+{
+    "title": "The final Chapter",
+    "name": "finalChapter",
+    "order": 0,
+    "descriptions": [
+        {
+            "name": "FinalChapterDescription",
+            "title": "Our Findings",
+            "order": 0,
+            "type": "SectionDescription",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas commodo tortor eu interdum congue. Fusce convallis felis purus, non scelerisque arcu lobortis ultricies. Donec dapibus mauris sed orci vulputate, eu ultrices urna maximus. Ut id euismod eros. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aenean blandit odio vitae enim ornare, sed tristique tellus accumsan."
+        }
+    ],
+    "inputs": [
+        {
+            "name": "Population",
+            "title": "Population size",
+            "order": 0,
+            "type": "RangeInput",
+            "max": 100000,
+            "min": 10000,
+            "init": 100000
+        },
+        {
+            "name": "Prev",
+            "title": "Prevalence",
+            "order": 1,
+            "type": "RangeInput",
+            "max": 1,
+            "min": 0,
+            "step": 0.001,
+            "init": 0.012
+        },
+        {
+            "name": "confusionErrorInput",
+            "title": "Confusion Errors",
+            "order": 2,
+            "type": "ConfusionErrorInput",
+            "inputs": [
+                {
+                    "name": "Tp",
+                    "title": "True Positive",
+                    "order": 1,
+                    "type": "NumberInput",
+                    "max": 100,
+                    "min": 0,
+                    "init": 62
+                },
+                {
+                    "name": "Fp",
+                    "title": "False Positive",
+                    "order": 2,
+                    "type": "NumberInput",
+                    "max": 100,
+                    "min": 0,
+                    "init": 39
+                },
+                {
+                    "name": "Fn",
+                    "title": "False Negative",
+                    "order": 3,
+                    "type": "NumberInput",
+                    "max": 100,
+                    "min": 0,
+                    "init": 41
+                },
+                {
+                    "name": "Tn",
+                    "title": "True Negative",
+                    "order": 4,
+                    "type": "NumberInput",
+                    "max": 100,
+                    "min": 0,
+                    "init": 1400
+                }
+            ]
+        }
+    ],
+    "graphs": [
+        {
+            "name": "modelPerformanceGraph",
+            "title": "Model Performance",
+            "order": 1,
+            "type": "ModelPerformanceGraph",
+            "graphs": [
+                {
+                    "title": "PPV (precision)",
+                    "order": 0,
+                    "name": "PPV",
+                    "type": "LineGraph"
+                },
+                {
+                    "title": "NPV",
+                    "order": 1,
+                    "name": "NPV",
+                    "type": "LineGraph"
+                },
+                {
+                    "title": "Sensitivity (recall)",
+                    "order": 2,
+                    "name": "Sens",
+                    "type": "line"
+                },
+                {
+                    "title": "Specificity",
+                    "order": 3,
+                    "name": "Spec",
+                    "type": "LineGraph"
+                }
+            ]
+        },
+        {
+            "name": "confusionErrorGraph",
+            "title": "Confusion Errors",
+            "order": 1,
+            "type": "ConfusionErrorGraph",
+            "graphs": [
+                {
+                    "title": "TP",
+                    "order": 0,
+                    "name": "TruePos",
+                    "type": "LineGraph"
+                },
+                {
+                    "title": "FP",
+                    "order": 1,
+                    "name": "FalPos",
+                    "type": "LineGraph"
+                },
+                {
+                    "title": "FN",
+                    "order": 2,
+                    "name": "FalNeg",
+                    "type": "line"
+                },
+                {
+                    "title": "TN",
+                    "order": 3,
+                    "name": "TrueNeg",
+                    "type": "LineGraph"
+                }
+            ]
+        }
+    ]
+}

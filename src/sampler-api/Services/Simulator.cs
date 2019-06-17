@@ -15,7 +15,7 @@ namespace sampler_api.Services
     {
         public async Task<Simulate> Run(SimulateParams simulateParams)
         {
-            using (var client = new AmazonLambdaClient(RegionEndpoint.USEast1))
+            using (var client = new AmazonLambdaClient(RegionEndpoint.USEast2))
             {
                 var apirequest = new APIGatewayProxyRequest()
                 {

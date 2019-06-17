@@ -49,7 +49,7 @@ namespace sampler_api.Repositories
                     if (prop != null)
                     {
                         List<Coordinate> rawData = (List<Coordinate>)prop.GetValue(simulation);
-                        chapterGraph.Data = rawData.Where((x, i) => i % 10 == 0).ToList();
+                        chapterGraph.Data = rawData;
                     }
                 }
                 else
@@ -85,8 +85,10 @@ namespace sampler_api.Repositories
 
         public async Task<Chapter> GetUpdatedChapter(int id, SimulateParams simulateParams)
         {
-            return null;
-
+            Chapter chapter = await GetChapter(id);
+            Simulate simulation = await Simulator.Run(simulateParams);
+            chapter.Graphs = GetChapterGraphsData(chapter.Graphs, simulation);
+            return chapter;
         }
 
     }

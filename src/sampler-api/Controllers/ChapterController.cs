@@ -23,11 +23,11 @@ namespace sampler_api.Controllers
             return Ok(chapter);
         }
 
-        [HttpGet("update/{id}")]
+        [HttpGet("{id}/update")]
         public async Task<IActionResult> GetUpdatedChapter(int id, [FromQuery]SimulateParams simulateParams)
         {
-            Chapter test2 = await ChapterRepository.GetUpdatedChapter(id, simulateParams);
-            return Ok(test2);
+            Chapter chapter = await ChapterRepository.GetUpdatedChapter(id, simulateParams);
+            return Ok(chapter);
         }
     }
 }

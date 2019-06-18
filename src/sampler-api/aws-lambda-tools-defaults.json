@@ -10,7 +10,7 @@
     "region": "us-east-2",
     "configuration": "Release",
     "framework": "netcoreapp2.1",
-    "template": "sampler-api/serverless.template",
+    "template": "src/sampler-api/serverless.template",
     "s3-bucket": "sampler-app-api",
     "stack-name": "sampler-api"
 }

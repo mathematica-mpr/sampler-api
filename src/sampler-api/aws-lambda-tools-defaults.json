@@ -13,5 +13,5 @@
     "template": "src/sampler-api/serverless.template",
     "s3-bucket": "sampler-app-api",
     "stack-name": "sampler-api",
-    "cloudformation-role": "cfn-s3-role"
+    "cloudformation-role": "arn:aws:iam::059577207107:role/cfn-s3-role"
 }

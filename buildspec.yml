@@ -7,7 +7,6 @@ phases:
         runtime-versions:
             dotnet: 2.2
         commands:
-            - cd src/sampler-api
             - dotnet tool install -g Amazon.Lambda.Tools
     build:
         commands:

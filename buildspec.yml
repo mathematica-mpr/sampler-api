@@ -5,7 +5,7 @@ environment_variables:
 phases:
     install:
         runtime-versions:
-            dotnet: 2.1
+            dotnet: 2.2
         commands:
             - cd src/sampler-api
             - dotnet tool install -g Amazon.Lambda.Tools

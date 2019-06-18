@@ -1,0 +1,18 @@
+version: 0.2
+environment_variables:
+    plaintext:
+        S3_BUCKET: 'sampler-app-api'
+phases:
+    install:
+        runtime-versions:
+            dotnet: 2.1
+        commands:
+            - cd src/sampler-api
+            - dotnet tool install -g Amazon.Lambda.Tools
+    build:
+        commands:
+            - dotnet lambda deploy-serverless
+
+artifacts:
+    files:
+        - '**/*'

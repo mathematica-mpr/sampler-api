@@ -11,7 +11,7 @@ phases:
             - dotnet tool install -g Amazon.Lambda.Tools
     build:
         commands:
-            - dotnet lambda deploy-serverless
+            - dotnet lambda deploy-serverless -cfg aws-lambda-tools-default.json
 
 artifacts:
     files:

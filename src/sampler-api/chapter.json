@@ -2,21 +2,12 @@
     "title": "The final Chapter",
     "name": "finalChapter",
     "order": 0,
-    "descriptions": [
-        {
-            "name": "FinalChapterDescription",
-            "title": "Our Findings",
-            "order": 0,
-            "type": "SectionDescription",
-            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas commodo tortor eu interdum congue. Fusce convallis felis purus, non scelerisque arcu lobortis ultricies. Donec dapibus mauris sed orci vulputate, eu ultrices urna maximus. Ut id euismod eros. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aenean blandit odio vitae enim ornare, sed tristique tellus accumsan."
-        }
-    ],
     "inputs": [
         {
             "name": "Population",
             "title": "Population size",
             "order": 0,
-            "type": "RangeInput",
+            "type": "NumberInput",
             "max": 100000,
             "min": 10000,
             "init": 100000

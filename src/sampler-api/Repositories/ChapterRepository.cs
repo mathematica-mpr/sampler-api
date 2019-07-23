@@ -49,7 +49,7 @@ namespace sampler_api.Repositories
                     if (prop != null)
                     {
                         List<Coordinate> rawData = (List<Coordinate>)prop.GetValue(simulation);
-                        chapterGraph.Data = rawData;
+                        chapterGraph.Data = rawData.Where(x => x.Y != 0).ToList();
                     }
                 }
                 else

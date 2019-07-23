@@ -53,5 +53,8 @@ namespace sampler_api.Models
 
         [JsonProperty("Y")]
         public float Y { get; set; }
+
+        [JsonProperty("C")]
+        public float C { get; set; }
     }
 }

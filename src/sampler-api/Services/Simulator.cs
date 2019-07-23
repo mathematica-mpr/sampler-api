@@ -31,7 +31,7 @@ namespace sampler_api.Services
 
                 var request = new InvokeRequest
                 {
-                    FunctionName = "simulate",
+                    FunctionName = "simulateTesting",
                     Payload = JsonConvert.SerializeObject(apirequest)
                 };
 

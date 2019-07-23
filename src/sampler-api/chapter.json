@@ -2,30 +2,95 @@
     "title": "The final Chapter",
     "name": "finalChapter",
     "order": 0,
+    "descriptions": [
+        {
+            "name": "FirsCHapter",
+            "title": "Bayes and Confused",
+            "order": 0,
+            "type": "SectionDescription",
+            "content": "Our work includes building models that predict very rare events. 
+
+            One of these events is an adverse condition that patient occasionally contract in a hospital as a result of an unsanitary environment. This indicator of patient safety is called Postoperative Pulmonary Embolism or Deep Vein Thrombosis (PSI 12).
+            
+            We stumbled upon an article showing various performance metrics for models predicting the same event. We wanted to know: what is the probability of getting these numbers by chance?
+            "
+        },
+        {
+            "name": "SecondChapter",
+            "title": null,
+            "order": 1,
+            "type": "SectionDescription",
+            "content": "PSI 12 has a population size of 65,936 patients."
+        },
+        {
+            "name": "ThirdChapter",
+            "title": null,
+            "order": 3,
+            "type": "SectionDescription",
+            "content": "The prevalence for this event is very rare (thankfully for us) at 3.72 per thousand, or a rate of 0.00372."
+        },
+        {
+            "name": "FinalChapterDescription",
+            "title": null,
+            "order": 5,
+            "type": "SectionDescription",
+            "content": "From past research on hospitals across the country, we know the number of true positive, true negative, false negative and false positive cases of patients who are at risk of this condition. 
+            We input those values in our model below."
+        },
+        {
+            "name": "FinalChapterDescription",
+            "title": null,
+            "order": 7,
+            "type": "SectionDescription",
+            "content": "We are now able to visualize a distribution around the values of true positive, true negative, false negative and false positive cases that we just plugged in.
+
+            These distributions provide an estimate of how likely we are to have gotten the value we plugged in, and a sense of what other values are possible given our data."
+        },
+        {
+            "name": "FinalChapterDescription",
+            "title": null,
+            "order": 9,
+            "type": "SectionDescription",
+            "content": "The final panel the app provides shows distributions around values of model performance. 
+
+            Since models predicting rare events are hard to assess, these distributions provide a helpful gage of how likely we are to get the performance measures described here: PPV, NPV, sensitivity and specificity. "
+        },
+        {
+            "name": "FinalChapterDescription",
+            "title": null,
+            "order": 11,
+            "type": "SectionDescription",
+            "content": "For instance, if our model has a precision of 0.68 chance of getting such precision, or lower.
+
+            Often times, models predicting rare events will opt for low precision in favor of high NPV and specificity. 
+            
+            This value, combined with the rest of the model performance metrics, suggests that our model is high performing."
+        }
+    ],
     "inputs": [
         {
             "name": "Population",
             "title": "Population size",
-            "order": 0,
+            "order": 2,
             "type": "NumberInput",
             "max": 100000,
             "min": 10000,
-            "init": 100000
+            "init": 65936 
         },
         {
             "name": "Prev",
             "title": "Prevalence",
-            "order": 1,
+            "order": 4,
             "type": "RangeInput",
             "max": 0.99,
             "min": 0,
-            "step": 0.001,
-            "init": 0.012
+            "step": 0.00001,
+            "init": 0.00372
         },
         {
             "name": "confusionErrorInput",
             "title": "Confusion Errors",
-            "order": 2,
+            "order": 6,
             "type": "ConfusionErrorInput",
             "inputs": [
                 {
@@ -71,7 +136,7 @@
         {
             "name": "modelPerformanceGraph",
             "title": "Model Performance",
-            "order": 1,
+            "order": 10,
             "type": "ModelPerformanceGraph",
             "graphs": [
                 {
@@ -103,7 +168,7 @@
         {
             "name": "confusionErrorGraph",
             "title": "Confusion Errors",
-            "order": 1,
+            "order": 8,
             "type": "ConfusionErrorGraph",
             "graphs": [
                 {

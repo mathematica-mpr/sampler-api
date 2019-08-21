@@ -44,6 +44,19 @@ namespace sampler_api.Models
 
         [JsonProperty("Spec")]
         public IList<Coordinate> Spec { get; set; }
+
+
+        [JsonProperty("Fpr")]
+        public IList<Coordinate> Fpr { get; set; }
+
+        [JsonProperty("Fnr")]
+        public IList<Coordinate> Fnr { get; set; }
+
+        [JsonProperty("Fdr")]
+        public IList<Coordinate> Fdr { get; set; }
+
+        [JsonProperty("For")]
+        public IList<Coordinate> For { get; set; }
     }
 
     public class Coordinate

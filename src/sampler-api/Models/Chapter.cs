@@ -9,6 +9,7 @@ namespace sampler_api.Models
         public string Title { get; set; }
         public int Order { get; set; }
         public string Type { get; set; }
+        public string Content { get; set; }
     }
 
     public class Chapter : ChapterElement

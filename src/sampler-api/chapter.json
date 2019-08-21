@@ -2,7 +2,15 @@
     "title": "The final Chapter",
     "name": "finalChapter",
     "order": 0,
-    "descriptions": [],
+    "descriptions": [
+        {
+            "title": "Parameters",
+            "order": 0,
+            "name": "explanation",
+            "type": "SectionDescription",
+            "content": "Some explanation about <span class='explanation' value='Population'>population size</span>. Some explanation about <span class='explanation' value='Prev'>prevalence</span>. Some explanation about <span class='explanation' value='confusionErrorInput'>confusion matrix</span>."
+        }
+    ],
     "inputs": [
         {
             "name": "Population",

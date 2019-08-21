@@ -115,7 +115,7 @@
                     "order": 5,
                     "name": "Fpr",
                     "type": "LineGraph",
-                    "content": "Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos."
+                    "content": "Mauris id urna fringilla, tempor nisi quis, maximus arcu. Ut orci erat, pulvinar vitae egestas ac, dapibus sed enim. Donec vestibulum interdum sodales."
                 },
                 {
                     "title": "PPV (precision)",
@@ -136,21 +136,21 @@
                     "order": 8,
                     "name": "Sens",
                     "type": "LineGraph",
-                    "content": "Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos."
+                    "content": "Mauris id urna fringilla, tempor nisi quis, maximus arcu. Ut orci erat, pulvinar vitae egestas ac, dapibus sed enim. Donec vestibulum interdum sodales."
                 },
                 {
                     "title": "Specificity",
                     "order": 9,
                     "name": "Spec",
                     "type": "LineGraph",
-                    "content": "Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos."
+                    "content": "Fusce sodales vel turpis quis ornare. Ut non nisi nec felis vestibulum bibendum. Fusce vel ligula sit amet lacus pellentesque aliquam."
                 },
                 {
                     "title": "FDR",
                     "order": 10,
                     "name": "Fdr",
                     "type": "LineGraph",
-                    "content": "Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos."
+                    "content": "Nulla in velit blandit, molestie magna quis, scelerisque mi."
                 },
                 {
                     "title": "FOR",

@@ -8,7 +8,7 @@
             "order": 0,
             "name": "explanation",
             "type": "SectionDescription",
-            "content": "Some explanation about <span class='explanation' value='Population'>population size</span>. Some explanation about <span class='explanation' value='Prev'>prevalence</span>. Some explanation about <span class='explanation' value='confusionErrorInput'>confusion matrix</span>."
+            "content": "Some explanation about <span class='explanation' value='Population'>population size</span>. Some explanation about <span class='explanation' value='Prev'>prevalence</span>. Some explanation about <span class='explanation' value='confusionErrorInput'>confusion matrix values</span>."
         }
     ],
     "inputs": [
@@ -88,84 +88,84 @@
                     "order": 0,
                     "name": "TruePos",
                     "type": "LineGraph",
-                    "content": "Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos."
+                    "content": "<b>True Positives:</b> Distribution of the number of actual positive observations correctly predicted as positive."
                 },
                 {
                     "title": "FP",
                     "order": 1,
                     "name": "FalPos",
                     "type": "LineGraph",
-                    "content": "Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos."
+                    "content": "<b>False Positives:</b> Distribution of the number of negative observations incorrectly predicted as positive."
                 },
                 {
                     "title": "FN",
                     "order": 2,
                     "name": "FalNeg",
                     "type": "line",
-                    "content": "Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos."
+                    "content": "<b>False Negatives:</b> Distribution of the number of positive observations incorrectly predicted as negative."
                 },
                 {
                     "title": "TN",
                     "order": 3,
                     "name": "TrueNeg",
                     "type": "LineGraph",
-                    "content": "Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos."
+                    "content": "<b>True Negatives:</b> Distribution of the number of negative observations correctly predicted as negative."
                 },
                 {
                     "title": "FNR",
                     "order": 4,
                     "name": "Fnr",
                     "type": "line",
-                    "content": "Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos."
+                    "content": "<b>False Negative Rate:</b> Distribution of the proportion of negative predictions that are actually positive. <br> <br> P[d=0|Y=1]"
                 },
                 {
                     "title": "FPR",
                     "order": 5,
                     "name": "Fpr",
                     "type": "LineGraph",
-                    "content": "Mauris id urna fringilla, tempor nisi quis, maximus arcu. Ut orci erat, pulvinar vitae egestas ac, dapibus sed enim. Donec vestibulum interdum sodales."
+                    "content": "<b>False Positive Rate:</b> Distribution of the proportion of positive predictions that are actually negative. <br> <br> P[d=1|Y=0]"
                 },
                 {
-                    "title": "PPV (precision)",
+                    "title": "PPV (Precision)",
                     "order": 6,
                     "name": "PPV",
                     "type": "LineGraph",
-                    "content": "Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos."
+                    "content": "<b>Positive Predictive Value (Precision):</b> Distribution of the proportion of actual positive observations correctly predicted as positive. <br> <br> P[Y=1|d=1]"
                 },
                 {
                     "title": "NPV",
                     "order": 7,
                     "name": "NPV",
                     "type": "LineGraph",
-                    "content": "Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos."
+                    "content": "<b>Negative Predictive Value:</b> Distribution of the proportion of negative observations correctly predicted as negative. <br> <br> P[Y=0|d=0]"
                 },
                 {
-                    "title": "Sensitivity (recall)",
+                    "title": "TPR (Recall/Sensitivity)",
                     "order": 8,
                     "name": "Sens",
                     "type": "LineGraph",
-                    "content": "Mauris id urna fringilla, tempor nisi quis, maximus arcu. Ut orci erat, pulvinar vitae egestas ac, dapibus sed enim. Donec vestibulum interdum sodales."
+                    "content": "<b>True Positive Rate (Recall/Sensitivity):</b> Distribution of the proportion of positive predictions that are actually positive. <br> <br> P[d=1|Y=1]"
                 },
                 {
-                    "title": "Specificity",
+                    "title": "TNR (Specificity)",
                     "order": 9,
                     "name": "Spec",
                     "type": "LineGraph",
-                    "content": "Fusce sodales vel turpis quis ornare. Ut non nisi nec felis vestibulum bibendum. Fusce vel ligula sit amet lacus pellentesque aliquam."
+                    "content": "<b>True Negative Rate (Specificity):</b> Distribution of the proportion of negative predictions that are actually negative. <br> <br> P[d=0|Y=0]"
                 },
                 {
                     "title": "FDR",
                     "order": 10,
                     "name": "Fdr",
                     "type": "LineGraph",
-                    "content": "Nulla in velit blandit, molestie magna quis, scelerisque mi."
+                    "content": "<b>False Discovery Rate:</b> Distribution of the proportion of negative observations incorrectly predicted as positive. <br> <br> P[Y=0|d=1]"
                 },
                 {
                     "title": "FOR",
                     "order": 11,
                     "name": "For",
                     "type": "LineGraph",
-                    "content": "Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos."
+                    "content": "<b>False Omission Rate: </b> Distribution of the proportion of positve observations incorrectly predicted as negative. <br> <br> P[Y=1|d=0]"
                 }
             ]
         }

@@ -48,8 +48,21 @@ namespace sampler_api.Repositories
                     PropertyInfo prop = simulation.GetType().GetProperty(chapterGraph.Name);
                     if (prop != null)
                     {
-                        List<Coordinate> rawData = (List<Coordinate>)prop.GetValue(simulation);
-                        chapterGraph.Data = rawData.Where(x => x.Y != 0).ToList();
+                        List<GraphItem> rawData = new List<GraphItem>();
+                        rawData.Add(new GraphItem()
+                        {
+                            Coordinates = (List<Coordinate>)prop.GetValue(simulation),
+                            GUID = Utils.GenerateGUID()
+                        });
+
+                        // TODO: remove once figured out how to double xhr
+                        rawData.Add(new GraphItem()
+                        {
+                            Coordinates = (List<Coordinate>)prop.GetValue(simulation),
+                            GUID = Utils.GenerateGUID()
+                        });
+
+                        chapterGraph.GraphItems = rawData.ToList();
                     }
                 }
                 else

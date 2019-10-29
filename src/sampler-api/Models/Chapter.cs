@@ -14,14 +14,9 @@ namespace sampler_api.Models
 
     public class Chapter : ChapterElement
     {
-        public List<ChapterDescription> Descriptions { get; set; }
+        public List<ChapterElement> Descriptions { get; set; }
         public List<ChapterInput> Inputs { get; set; }
         public List<ChapterGraph> Graphs { get; set; }
-    }
-
-    public class ChapterDescription : ChapterElement
-    {
-        public string Content { get; set; }
     }
 
     public class ChapterInput : ChapterElement
@@ -35,7 +30,13 @@ namespace sampler_api.Models
 
     public class ChapterGraph : ChapterElement
     {
-        public List<Coordinate> Data { get; set; }
+        public List<GraphItem> GraphItems { get; set; }
         public List<ChapterGraph> Graphs { get; set; }
+    }
+
+    public class GraphItem
+    {
+        public string GUID { get; set; }
+        public List<Coordinate> Coordinates { get; set; }
     }
 }

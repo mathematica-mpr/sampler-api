@@ -8,7 +8,11 @@
             "order": 0,
             "name": "explanation",
             "type": "SectionDescription",
-            "content": "Some explanation about <span class='explanation' value='Population'>population size</span>. Some explanation about <span class='explanation' value='Prev'>prevalence</span>. Some explanation about <span class='explanation' value='confusionErrorInput'>confusion matrix values</span>."
+            "content": "<span class='explanation' value='Population'>Population</span> refers to the general population. It should be different than the sample you used in your study.
+            <br><br>
+            <span class='explanation' value='Prev'>Prevalence</span> is the prevalence of the condition in the general population. Similarly to the population, this number should be different than the prevalence in the sample you used in your study.
+            <br><br>
+            The values in the <span class='explanation' value='confusionErrorInput'>confusion matrix</span> (true positive, false positive, false negative and true negative) should come from the sample you used to conduct your study or build your algorithm"
         }
     ],
     "inputs": [
@@ -25,7 +29,7 @@
             "name": "Prev",
             "title": "Prevalence",
             "order": 4,
-            "type": "NumberInput",
+            "type": "RangeInput",
             "max": 0.99,
             "min": 0,
             "step": 0.00001,
@@ -42,7 +46,7 @@
                     "title": "True Positive",
                     "order": 1,
                     "type": "NumberInput",
-                    "max": 100,
+                    "max": 1000000,
                     "min": 0,
                     "init": 444446
                 },
@@ -51,7 +55,7 @@
                     "title": "False Positive",
                     "order": 2,
                     "type": "NumberInput",
-                    "max": 100,
+                    "max": 1000000,
                     "min": 0,
                     "init": 276814
                 },
@@ -60,7 +64,7 @@
                     "title": "False Negative",
                     "order": 3,
                     "type": "NumberInput",
-                    "max": 100,
+                    "max": 1000000,
                     "min": 0,
                     "init": 172754
                 },
@@ -69,7 +73,7 @@
                     "title": "True Negative",
                     "order": 4,
                     "type": "NumberInput",
-                    "max": 100,
+                    "max": 1000000,
                     "min": 0,
                     "init": 340386
                 }

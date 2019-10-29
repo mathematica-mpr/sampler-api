@@ -1,3 +1,4 @@
+using System;
 using System.Reflection;
 
 namespace sampler_api.Helpers
@@ -16,6 +17,11 @@ namespace sampler_api.Helpers
             }
 
             return A;
+        }
+
+        public static string GenerateGUID()
+        {
+            return Guid.NewGuid().ToString("N");
         }
 
     }

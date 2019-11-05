@@ -20,7 +20,8 @@ namespace sampler_api.Repositories
 
         public async Task<Chapter> GetInitChapter(int id)
         {
-            Chapter chapter = await GetChapter(id);
+            Chapter chapter = await GetChapter();
+            List<ChapterInput> inputs = await InitChapterInputs();
             SimulateParams simParams = GetSimulateParams(chapter.Inputs);
             Simulate simulation = await Simulator.Run(simParams);
             chapter.Graphs = GetChapterGraphsData(chapter.Graphs, simulation);
@@ -28,7 +29,69 @@ namespace sampler_api.Repositories
             return chapter;
         }
 
-        public async Task<Chapter> GetChapter(int id)
+
+        // TODO: add controler for adding a set of inputs
+        public async Task<List<ChapterInput>> AddChapterInputs()
+        {
+            Chapter chapter = await GetChapter();
+            string guid = Utils.GenerateGUID();
+            chapter.Inputs.ForEach(input =>
+            {
+                AddChapterItem(input, guid);
+            });
+
+            return chapter.Inputs;
+        }
+        public async Task<List<ChapterInput>> InitChapterInputs()
+        {
+            Chapter chapter = await GetChapter();
+            string guid = Utils.GenerateGUID();
+            chapter.Inputs.ForEach(input =>
+            {
+                AssignGUIDS(input, guid);
+            });
+
+            return chapter.Inputs;
+        }
+
+        public void AddChapterItem(ChapterInput chapterInput, string guid)
+        {
+
+            if (chapterInput.InputItems.Count() > 0)
+            {
+                chapterInput.InputItems.Add(new InputItem(guid));
+
+            }
+            else
+            {
+                chapterInput.Inputs.ForEach(input =>
+                {
+                    AddChapterItem(input, guid);
+                });
+            }
+        }
+
+        public void AssignGUIDS(ChapterInput chapterInput, string guid)
+        {
+            if (chapterInput.InputItems.Count() > 0)
+            {
+                chapterInput.InputItems.ForEach(item =>
+               {
+                   item.GUID = guid;
+               });
+
+            }
+            else
+            {
+                chapterInput.Inputs.ForEach(input =>
+                {
+                    AssignGUIDS(input, guid);
+                });
+            }
+        }
+
+
+        public async Task<Chapter> GetChapter()
         {
             // TODO: this should be replaced when DynamoDB
             using (StreamReader r = new StreamReader("chapter.json"))
@@ -76,29 +139,30 @@ namespace sampler_api.Repositories
 
         private SimulateParams GetSimulateParams(List<ChapterInput> chapterInputs)
         {
-            SimulateParams parentParams = new SimulateParams();
-            SimulateParams childParams = new SimulateParams();
+            // SimulateParams parentParams = new SimulateParams();
+            // SimulateParams childParams = new SimulateParams();
 
-            chapterInputs.ForEach(chapterInput =>
-            {
-                if (chapterInput.Inputs == null)
-                {
-                    PropertyInfo prop = parentParams.GetType().GetProperty(chapterInput.Name);
-                    prop.SetValue(parentParams, chapterInput.Init.ToString());
-                }
-                else
-                {
-                    childParams = GetSimulateParams(chapterInput.Inputs);
-                }
-            });
+            // chapterInputs.ForEach(chapterInput =>
+            // {
+            //     if (chapterInput.Inputs == null)
+            //     {
+            //         PropertyInfo prop = parentParams.GetType().GetProperty(chapterInput.Name);
+            //         prop.SetValue(parentParams, chapterInput.Init.ToString());
+            //     }
+            //     else
+            //     {
+            //         childParams = GetSimulateParams(chapterInput.Inputs);
+            //     }
+            // });
 
-            SimulateParams combineParams = Utils.Combine<SimulateParams>(parentParams, childParams);
-            return combineParams;
+            // SimulateParams combineParams = Utils.Combine<SimulateParams>(parentParams, childParams);
+            // return combineParams;
+            return null;
         }
 
         public async Task<Chapter> GetUpdatedChapter(int id, SimulateParams simulateParams)
         {
-            Chapter chapter = await GetChapter(id);
+            Chapter chapter = await GetChapter();
             Simulate simulation = await Simulator.Run(simulateParams);
             chapter.Graphs = GetChapterGraphsData(chapter.Graphs, simulation);
             return chapter;

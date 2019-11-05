@@ -45,7 +45,7 @@ namespace sampler_api.Models
         {
             GUID = guid;
         }
-        public float? value { get; set; }
+        public float? Value { get; set; }
     }
 
     public class ChapterGraph : ChapterElement

@@ -16,10 +16,10 @@ namespace sampler_api.Controllers
         {
             ChapterRepository = chapterRepository;
         }
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetChapter(int id)
+        [HttpGet("init")]
+        public async Task<IActionResult> GetInitChapter()
         {
-            Chapter chapter = await ChapterRepository.GetInitChapter(id);
+            Chapter chapter = await ChapterRepository.GetInitChapter();
             return Ok(chapter);
         }
 

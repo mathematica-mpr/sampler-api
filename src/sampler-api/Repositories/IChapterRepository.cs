@@ -5,7 +5,7 @@ namespace sampler_api.Repositories
 {
     public interface IChapterRepository
     {
-        Task<Chapter> GetChapter(int id);
+        Task<Chapter> GetChapter();
         Task<Chapter> GetInitChapter(int id);
         Task<Chapter> GetUpdatedChapter(int id, SimulateParams sampleParams);
     }

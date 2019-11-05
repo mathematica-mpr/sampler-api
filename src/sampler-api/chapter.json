@@ -23,7 +23,9 @@
             "type": "NumberInput",
             "max": 100000000,
             "min": 10000,
-            "init": 1000000
+            "InputItems":[{
+                "Value": 1000000
+            }]
         },
         {
             "name": "Prev",
@@ -33,7 +35,9 @@
             "max": 0.99,
             "min": 0,
             "step": 0.00001,
-            "init": 0.5
+            "InputItems":[{
+                "Value": 0.5
+            }]
         },
         {
             "name": "confusionErrorInput",
@@ -48,7 +52,9 @@
                     "type": "NumberInput",
                     "max": 1000000,
                     "min": 0,
-                    "init": 444446
+                    "InputItems":[{
+                        "Value": 444446
+                    }]
                 },
                 {
                     "name": "Fp",
@@ -57,7 +63,9 @@
                     "type": "NumberInput",
                     "max": 1000000,
                     "min": 0,
-                    "init": 276814
+                    "InputItems":[{
+                        "Value": 276814
+                    }]
                 },
                 {
                     "name": "Fn",
@@ -66,7 +74,9 @@
                     "type": "NumberInput",
                     "max": 1000000,
                     "min": 0,
-                    "init": 172754
+                    "InputItems":[{
+                        "Value": 172754
+                    }]
                 },
                 {
                     "name": "Tn",
@@ -74,8 +84,10 @@
                     "order": 4,
                     "type": "NumberInput",
                     "max": 1000000,
-                    "min": 0,
-                    "init": 340386
+                    "min": 0 ,
+                    "InputItems":[{
+                        "Value": 340386
+                    }]
                 }
             ]
         }

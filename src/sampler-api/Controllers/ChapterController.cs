@@ -1,6 +1,8 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using sampler_api.Helpers;
 using sampler_api.Models;
 using sampler_api.Repositories;
 
@@ -23,10 +25,11 @@ namespace sampler_api.Controllers
             return Ok(chapter);
         }
 
-        [HttpGet("{id}/update")]
-        public async Task<IActionResult> GetUpdatedChapter(int id, [FromQuery]SimulateParams simulateParams)
+
+        [HttpGet("update")]
+        public async Task<IActionResult> UpdateGraphs([FromQuery]SimulateParams simulateParams, [FromBody]List<ChapterGraph> chapterGraphs)
         {
-            Chapter chapter = await ChapterRepository.GetUpdatedChapter(id, simulateParams);
+            List<ChapterGraph> chapter = await ChapterRepository.UpdateGraphs(simulateParams, chapterGraphs);
             return Ok(chapter);
         }
     }

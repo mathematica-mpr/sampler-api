@@ -21,9 +21,17 @@ namespace sampler_api.Repositories
         public async Task<Chapter> GetInitChapter()
         {
             Chapter chapter = await GetChapter();
-            string guid = Utils.GenerateGUID();
-            InitChapterInputs(chapter.Inputs, guid);
-            await InitChapterGraphs(chapter, guid);
+
+            var items = chapter.Inputs.First().InputItems;
+
+            for (int i = 0; i < items.Count(); i++)
+            {
+                string guid = Utils.GenerateGUID();
+                InitChapterInputs(chapter.Inputs, guid, i);
+                await InitChapterGraphs(chapter, guid);
+            }
+
+
             return chapter;
         }
 
@@ -40,12 +48,12 @@ namespace sampler_api.Repositories
 
             return chapter.Inputs;
         }
-        public void InitChapterInputs(List<ChapterInput> chapterInputs, string guid)
+        public void InitChapterInputs(List<ChapterInput> chapterInputs, string guid, int inputIndex)
         {
 
             chapterInputs.ForEach(input =>
             {
-                AssignGUIDS(input, guid);
+                AssignGUIDS(input, guid, inputIndex);
             });
         }
 
@@ -72,21 +80,17 @@ namespace sampler_api.Repositories
             }
         }
 
-        public void AssignGUIDS(ChapterInput chapterInput, string guid)
+        public void AssignGUIDS(ChapterInput chapterInput, string guid, int inputIndex)
         {
             if (chapterInput.InputItems.Count() > 0)
             {
-                chapterInput.InputItems.ForEach(item =>
-               {
-                   item.GUID = guid;
-               });
-
+                chapterInput.InputItems[inputIndex].GUID = guid;
             }
             else
             {
                 chapterInput.Inputs.ForEach(input =>
                 {
-                    AssignGUIDS(input, guid);
+                    AssignGUIDS(input, guid, inputIndex);
                 });
             }
         }
@@ -121,21 +125,13 @@ namespace sampler_api.Repositories
                     PropertyInfo prop = simulation.GetType().GetProperty(chapterGraph.Name);
                     if (prop != null)
                     {
-                        List<GraphItem> rawData = new List<GraphItem>();
-                        rawData.Add(new GraphItem()
+                        GraphItem newGraphItem = new GraphItem()
                         {
                             Coordinates = (List<Coordinate>)prop.GetValue(simulation),
                             GUID = guid
-                        });
+                        };
 
-                        // TODO: remove once figured out how to double xhr
-                        rawData.Add(new GraphItem()
-                        {
-                            Coordinates = (List<Coordinate>)prop.GetValue(simulation),
-                            GUID = guid
-                        });
-
-                        chapterGraph.GraphItems = rawData.ToList();
+                        chapterGraph.GraphItems.Add(newGraphItem);
                     }
                 }
                 else
@@ -175,12 +171,14 @@ namespace sampler_api.Repositories
             return combineParams;
         }
 
-        public async Task<Chapter> GetUpdatedChapter(int id, SimulateParams simulateParams)
+        public async Task<List<ChapterGraph>> UpdateGraphs(SimulateParams simulateParams, List<ChapterGraph> chapterGraphs)
         {
-            Chapter chapter = await GetChapter();
+
             Simulate simulation = await Simulator.Run(simulateParams);
             // chapter.Graphs = GetChapterGraphsData(chapter.Graphs, simulation);
-            return chapter;
+            // return chapter;
+
+            return null;
         }
 
     }

@@ -50,6 +50,10 @@ namespace sampler_api.Models
 
     public class ChapterGraph : ChapterElement
     {
+        public ChapterGraph()
+        {
+            GraphItems = new List<GraphItem>();
+        }
         public List<GraphItem> GraphItems { get; set; }
         public List<ChapterGraph> Graphs { get; set; }
     }

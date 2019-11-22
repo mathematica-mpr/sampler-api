@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using sampler_api.Models;
 
@@ -7,6 +8,6 @@ namespace sampler_api.Repositories
     {
         Task<Chapter> GetChapter();
         Task<Chapter> GetInitChapter();
-        Task<Chapter> GetUpdatedChapter(int id, SimulateParams sampleParams);
+        Task<List<ChapterGraph>> UpdateGraphs(SimulateParams simulateParams, List<ChapterGraph> chapterGraphs);
     }
 }

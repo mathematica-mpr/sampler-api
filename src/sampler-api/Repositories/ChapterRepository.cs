@@ -33,9 +33,9 @@ namespace sampler_api.Repositories
             return chapter;
         }
 
-        public async Task InitChapterGraphs(Menu menu, List<ChapterGraph> chapterGraphs)
+        public async Task InitChapterGraphs(Menu menu, List<Graph> chapterGraphs)
         {
-            Simulate simulation = await GetSimulate(menu);
+            Simulate simulation = await Simulator.GetSimulate(menu);
             SetChapterGraphsData(chapterGraphs, simulation, menu.GUID);
         }
 
@@ -50,16 +50,8 @@ namespace sampler_api.Repositories
             }
         }
 
-        // TODO: probably move that to Simulate service
-        private async Task<Simulate> GetSimulate(Menu menu)
-        {
-            SimulateParams simParams = GetSimulateParams(menu.Inputs, menu.GUID);
-            Simulate simulation = await Simulator.Run(simParams);
 
-            return simulation;
-        }
-
-        private void SetChapterGraphsData(List<ChapterGraph> chapterGraphs, Simulate simulation, string guid)
+        private void SetChapterGraphsData(List<Graph> chapterGraphs, Simulate simulation, string guid)
         {
             chapterGraphs.ForEach(chapterGraph =>
             {
@@ -86,33 +78,10 @@ namespace sampler_api.Repositories
         }
 
 
-        private SimulateParams GetSimulateParams(List<ChapterInput> chapterInputs, string guid)
-        {
-            SimulateParams parentParams = new SimulateParams();
-            SimulateParams childParams = new SimulateParams();
-
-            chapterInputs.ForEach(chapterInput =>
-            {
-                if (chapterInput.Inputs == null)
-                {
-                    PropertyInfo prop = parentParams.GetType().GetProperty(chapterInput.Name);
-                    prop.SetValue(parentParams, chapterInput.Value.ToString());
-                }
-                else
-                {
-                    childParams = GetSimulateParams(chapterInput.Inputs, guid);
-                }
-            });
-
-            SimulateParams combineParams = Utils.Combine<SimulateParams>(parentParams, childParams);
-
-            return combineParams;
-        }
-
-        public async Task<List<ChapterGraph>> UpdateGraphs(SimulateParams simulateParams, List<ChapterGraph> chapterGraphs)
+        public async Task<List<Graph>> UpdateGraphs(SimulateParams simulateParams, List<Graph> chapterGraphs)
         {
 
-            Simulate simulation = await Simulator.Run(simulateParams);
+            // Simulate simulation = await Simulator.Run(simulateParams);
             // chapter.Graphs = GetChapterGraphsData(chapter.Graphs, simulation);
             // return chapter;
 

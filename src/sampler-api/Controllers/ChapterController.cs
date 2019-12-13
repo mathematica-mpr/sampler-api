@@ -27,9 +27,9 @@ namespace sampler_api.Controllers
 
 
         [HttpGet("update")]
-        public async Task<IActionResult> UpdateGraphs([FromQuery]SimulateParams simulateParams, [FromBody]List<ChapterGraph> chapterGraphs)
+        public async Task<IActionResult> UpdateGraphs([FromQuery]SimulateParams simulateParams, [FromBody]List<Graph> chapterGraphs)
         {
-            List<ChapterGraph> chapter = await ChapterRepository.UpdateGraphs(simulateParams, chapterGraphs);
+            List<Graph> chapter = await ChapterRepository.UpdateGraphs(simulateParams, chapterGraphs);
             return Ok(chapter);
         }
     }

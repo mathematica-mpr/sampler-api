@@ -8,6 +8,6 @@ namespace sampler_api.Repositories
     {
         Task<Chapter> GetChapter();
         Task<Chapter> GetInitChapter();
-        Task<List<ChapterGraph>> UpdateGraphs(SimulateParams simulateParams, List<ChapterGraph> chapterGraphs);
+        Task<List<Graph>> UpdateGraphs(SimulateParams simulateParams, List<Graph> chapterGraphs);
     }
 }

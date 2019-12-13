@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
@@ -11,7 +10,7 @@ namespace sampler_api.Repositories
     {
         public async Task<Menu> GetMenu()
         {
-            using (StreamReader r = new StreamReader("menu.json"))
+            using (StreamReader r = new StreamReader("configmenus.json"))
             {
                 string json = await r.ReadToEndAsync();
                 Menu menu = JsonConvert.DeserializeObject<Menu>(json);

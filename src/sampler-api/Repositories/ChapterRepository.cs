@@ -22,79 +22,22 @@ namespace sampler_api.Repositories
         {
             Chapter chapter = await GetChapter();
 
-            var items = chapter.Inputs.First().InputItems;
+            var menus = chapter.Menus;
 
-            for (int i = 0; i < items.Count(); i++)
+            for (int i = 0; i < menus.Count(); i++)
             {
-                string guid = Utils.GenerateGUID();
-                InitChapterInputs(chapter.Inputs, guid, i);
-                await InitChapterGraphs(chapter, guid);
+                menus[i].GUID = Utils.GenerateGUID();
+                await InitChapterGraphs(menus[i], chapter.Graphs);
             }
-
 
             return chapter;
         }
 
-
-        // TODO: add controler for adding a set of inputs
-        public async Task<List<ChapterInput>> AddChapterInputs()
+        public async Task InitChapterGraphs(Menu menu, List<ChapterGraph> chapterGraphs)
         {
-            Chapter chapter = await GetChapter();
-            string guid = Utils.GenerateGUID();
-            chapter.Inputs.ForEach(input =>
-            {
-                AddChapterItem(input, guid);
-            });
-
-            return chapter.Inputs;
+            Simulate simulation = await GetSimulate(menu);
+            SetChapterGraphsData(chapterGraphs, simulation, menu.GUID);
         }
-        public void InitChapterInputs(List<ChapterInput> chapterInputs, string guid, int inputIndex)
-        {
-
-            chapterInputs.ForEach(input =>
-            {
-                AssignGUIDS(input, guid, inputIndex);
-            });
-        }
-
-        public async Task InitChapterGraphs(Chapter chapter, string guid)
-        {
-            Simulate simulation = await GetSimulate(chapter.Inputs, guid);
-            SetChapterGraphsData(chapter.Graphs, simulation, guid);
-        }
-
-        public void AddChapterItem(ChapterInput chapterInput, string guid)
-        {
-
-            if (chapterInput.InputItems.Count() > 0)
-            {
-                chapterInput.InputItems.Add(new InputItem(guid));
-
-            }
-            else
-            {
-                chapterInput.Inputs.ForEach(input =>
-                {
-                    AddChapterItem(input, guid);
-                });
-            }
-        }
-
-        public void AssignGUIDS(ChapterInput chapterInput, string guid, int inputIndex)
-        {
-            if (chapterInput.InputItems.Count() > 0)
-            {
-                chapterInput.InputItems[inputIndex].GUID = guid;
-            }
-            else
-            {
-                chapterInput.Inputs.ForEach(input =>
-                {
-                    AssignGUIDS(input, guid, inputIndex);
-                });
-            }
-        }
-
 
         public async Task<Chapter> GetChapter()
         {
@@ -108,9 +51,9 @@ namespace sampler_api.Repositories
         }
 
         // TODO: probably move that to Simulate service
-        private async Task<Simulate> GetSimulate(List<ChapterInput> chapterInputs, string guid)
+        private async Task<Simulate> GetSimulate(Menu menu)
         {
-            SimulateParams simParams = GetSimulateParams(chapterInputs, guid);
+            SimulateParams simParams = GetSimulateParams(menu.Inputs, menu.GUID);
             Simulate simulation = await Simulator.Run(simParams);
 
             return simulation;
@@ -142,10 +85,6 @@ namespace sampler_api.Repositories
 
         }
 
-        private InputItem GetInputItem(ChapterInput chapterInput, string guid)
-        {
-            return chapterInput.InputItems.Where(x => x.GUID == guid).SingleOrDefault();
-        }
 
         private SimulateParams GetSimulateParams(List<ChapterInput> chapterInputs, string guid)
         {
@@ -157,8 +96,7 @@ namespace sampler_api.Repositories
                 if (chapterInput.Inputs == null)
                 {
                     PropertyInfo prop = parentParams.GetType().GetProperty(chapterInput.Name);
-                    InputItem inputItem = GetInputItem(chapterInput, guid);
-                    prop.SetValue(parentParams, inputItem.Value.ToString());
+                    prop.SetValue(parentParams, chapterInput.Value.ToString());
                 }
                 else
                 {

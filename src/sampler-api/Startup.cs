@@ -35,6 +35,7 @@ namespace sampler_api
             services.AddAWSService<Amazon.S3.IAmazonS3>();
 
             services.AddScoped<IChapterRepository, ChapterRepository>();
+            services.AddScoped<IMenuRepository, MenuRepository>();
             services.AddScoped<ISimulator, Simulator>();
         }
 

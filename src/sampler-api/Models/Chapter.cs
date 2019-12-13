@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using sampler_api.Helpers;
 
 namespace sampler_api.Models
 {
@@ -16,37 +15,38 @@ namespace sampler_api.Models
     public class Chapter : ChapterElement
     {
         public List<ChapterElement> Descriptions { get; set; }
-        public List<ChapterInput> Inputs { get; set; }
+        public List<Menu> Menus { get; set; }
         public List<ChapterGraph> Graphs { get; set; }
+    }
+
+    public class Menu : Unique
+    {
+        public Menu(string guid)
+        {
+            GUID = guid;
+        }
+        public List<ChapterInput> Inputs { get; set; }
     }
 
     public class ChapterInput : ChapterElement
     {
         public ChapterInput()
         {
-            InputItems = new List<InputItem>();
+
         }
         public List<ChapterInput> Inputs { get; set; }
         public float? Max { get; set; }
         public float? Min { get; set; }
-        public List<InputItem> InputItems { get; set; }
+        public float? Value { get; set; }
         public float? Step { get; set; }
     }
 
 
-    public class ChapterItem
+    public class Unique
     {
         public string GUID { get; set; }
     }
 
-    public class InputItem : ChapterItem
-    {
-        public InputItem(string guid)
-        {
-            GUID = guid;
-        }
-        public float? Value { get; set; }
-    }
 
     public class ChapterGraph : ChapterElement
     {
@@ -58,7 +58,7 @@ namespace sampler_api.Models
         public List<ChapterGraph> Graphs { get; set; }
     }
 
-    public class GraphItem : ChapterItem
+    public class GraphItem : Unique
     {
         public List<Coordinate> Coordinates { get; set; }
     }

@@ -9,7 +9,7 @@ using sampler_api.Repositories;
 namespace sampler_api.Controllers
 {
     [Route("api/[controller]")]
-    public class ChapterController : Controller
+    public class ChapterController : ControllerBase
     {
 
         private readonly IChapterRepository ChapterRepository;

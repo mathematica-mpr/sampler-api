@@ -16,6 +16,7 @@ namespace sampler_api.Controllers
             MenuRepository = menuRepository;
         }
 
+        [HttpGet]
         public async Task<IActionResult> GetMenu()
         {
             try

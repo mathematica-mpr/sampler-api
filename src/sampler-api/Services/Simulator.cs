@@ -14,14 +14,13 @@ namespace sampler_api.Services
 {
     public class Simulator : ISimulator
     {
-        public async Task<Simulate> GetSimulate(Menu menu)
+        public async Task<Simulate> GetSimulate(SimulateParams simulateParams)
         {
-            SimulateParams simParams = GetSimulateParams(menu.Inputs, menu.GUID);
-            Simulate simulation = await Run(simParams);
-
+            Simulate simulation = await Run(simulateParams);
             return simulation;
         }
 
+        // TODO: Remove once proved useless
         private SimulateParams GetSimulateParams(List<Input> chapterInputs, string guid)
         {
             SimulateParams parentParams = new SimulateParams();

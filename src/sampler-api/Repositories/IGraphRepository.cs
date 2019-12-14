@@ -6,6 +6,6 @@ namespace sampler_api.Repositories
 {
     public interface IGraphRepository
     {
-        Task<List<Graph>> GetGraphs(Menu menu);
+        Task<List<Graph>> GetGraphs(SimulateParams simulateParams);
     }
 }

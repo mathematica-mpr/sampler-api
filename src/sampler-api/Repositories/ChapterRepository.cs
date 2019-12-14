@@ -35,8 +35,8 @@ namespace sampler_api.Repositories
 
         public async Task InitChapterGraphs(Menu menu, List<Graph> chapterGraphs)
         {
-            Simulate simulation = await Simulator.GetSimulate(menu);
-            SetChapterGraphsData(chapterGraphs, simulation, menu.GUID);
+            // Simulate simulation = await Simulator.GetSimulate(menu);
+            // SetChapterGraphsData(chapterGraphs, simulation, menu.GUID);
         }
 
         public async Task<Chapter> GetChapter()

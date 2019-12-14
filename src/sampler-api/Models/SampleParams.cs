@@ -1,6 +1,6 @@
 namespace sampler_api.Models
 {
-    public class SimulateParams
+    public class SimulateParams : Unique
     {
         public string Population { get; set; }
         public string Prev { get; set; }

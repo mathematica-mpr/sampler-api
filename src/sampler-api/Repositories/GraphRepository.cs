@@ -16,11 +16,11 @@ namespace sampler_api.Repositories
         {
             Simulator = simulator;
         }
-        public async Task<List<Graph>> GetGraphs(Menu menu)
+        public async Task<List<Graph>> GetGraphs(SimulateParams simulateParams)
         {
-            Simulate simulation = await Simulator.GetSimulate(menu);
+            Simulate simulation = await Simulator.GetSimulate(simulateParams);
             List<Graph> graphs = await GetGraphsConfig();
-            graphs.SetGraphsData(simulation, menu.GUID);
+            graphs.SetGraphsData(simulation, simulateParams.GUID);
             return graphs;
         }
 

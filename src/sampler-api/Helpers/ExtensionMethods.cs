@@ -10,7 +10,7 @@ namespace sampler_api.Helpers
         {
             chapterGraphs.ForEach(chapterGraph =>
             {
-                if (chapterGraph.Graphs == null)
+                if (chapterGraph.Graphs.Count == 0)
                 {
                     PropertyInfo prop = simulation.GetType().GetProperty(chapterGraph.Name);
                     if (prop != null)

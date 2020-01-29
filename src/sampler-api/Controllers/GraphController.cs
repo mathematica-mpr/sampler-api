@@ -16,12 +16,26 @@ namespace sampler_api.Controllers
             GraphRepository = graphRepository;
         }
 
-        [HttpPost]
-        public async Task<IActionResult> GetGraph([FromQuery]SimulateParams simulateParams)
+        [HttpGet]
+        public async Task<IActionResult> GetGraph(string guid)
         {
             try
             {
-                List<Graph> graphs = await GraphRepository.GetGraphs(simulateParams);
+                List<Graph> graphs = await GraphRepository.GetGraphs(guid);
+                return Ok(graphs);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e);
+            }
+        }
+
+        [HttpGet("Update")]
+        public async Task<IActionResult> UpdateGraph([FromQuery]SimulateParams simulateParams)
+        {
+            try
+            {
+                List<Graph> graphs = await GraphRepository.UpdateGraphs(simulateParams);
                 return Ok(graphs);
             }
             catch (Exception e)

@@ -37,6 +37,7 @@ namespace sampler_api
             services.AddScoped<IChapterRepository, ChapterRepository>();
             services.AddScoped<IMenuRepository, MenuRepository>();
             services.AddScoped<ISimulator, Simulator>();
+            services.AddScoped<IGraphRepository, GraphRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline

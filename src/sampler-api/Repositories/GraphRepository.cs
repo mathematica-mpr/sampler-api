@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.IO;
-using System.Reflection;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using sampler_api.Helpers;
@@ -16,7 +15,30 @@ namespace sampler_api.Repositories
         {
             Simulator = simulator;
         }
-        public async Task<List<Graph>> GetGraphs(SimulateParams simulateParams)
+
+        public async Task<List<Graph>> GetGraphs(string guid)
+        {
+            var simulateParams = GetInitParams(guid);
+            Simulate simulation = await Simulator.GetSimulate(simulateParams);
+            List<Graph> graphs = await GetGraphsConfig();
+            graphs.SetGraphsData(simulation, simulateParams.GUID);
+            return graphs;
+        }
+
+        public SimulateParams GetInitParams(string guid)
+        {
+            return new SimulateParams()
+            {
+                GUID = guid,
+                Population = "1000000",
+                Prev = "0.5",
+                Tp = "444446",
+                Fp = "276814",
+                Fn = "172754",
+                Tn = "340386",
+            };
+        }
+        public async Task<List<Graph>> UpdateGraphs(SimulateParams simulateParams)
         {
             Simulate simulation = await Simulator.GetSimulate(simulateParams);
             List<Graph> graphs = await GetGraphsConfig();

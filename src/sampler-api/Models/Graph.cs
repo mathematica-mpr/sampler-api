@@ -7,6 +7,7 @@ namespace sampler_api.Models
         public Graph()
         {
             GraphItems = new List<GraphItem>();
+            Graphs = new List<Graph>();
         }
         public List<GraphItem> GraphItems { get; set; }
         public List<Graph> Graphs { get; set; }

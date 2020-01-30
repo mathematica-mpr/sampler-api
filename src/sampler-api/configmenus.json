@@ -1,0 +1,67 @@
+{
+    "inputs": [
+        {
+            "name": "Population",
+            "title": "Population size",
+            "order": 2,
+            "type": "NumberInput",
+            "max": 100000000,
+            "min": 10000,
+            "Value": 1000000
+        },
+        {
+            "name": "Prev",
+            "title": "Prevalence",
+            "order": 4,
+            "type": "RangeInput",
+            "max": 0.99,
+            "min": 0,
+            "step": 0.00001,
+            "Value": 0.5
+        },
+        {
+            "name": "confusionErrorInput",
+            "title": "Confusion Errors",
+            "order": 6,
+            "type": "ConfusionErrorInput",
+            "inputs": [
+                {
+                    "name": "Tp",
+                    "title": "True Positive",
+                    "order": 1,
+                    "type": "NumberInput",
+                    "max": 1000000,
+                    "min": 0,
+                    "Value": 444446
+                },
+                {
+                    "name": "Fp",
+                    "title": "False Positive",
+                    "order": 2,
+                    "type": "NumberInput",
+                    "max": 1000000,
+                    "min": 0,
+                    "Value": 276814
+                },
+                {
+                    "name": "Fn",
+                    "title": "False Negative",
+                    "order": 3,
+                    "type": "NumberInput",
+                    "max": 1000000,
+                    "min": 0,
+                    "Value": 172754
+                },
+                {
+                    "name": "Tn",
+                    "title": "True Negative",
+                    "order": 4,
+                    "type": "NumberInput",
+                    "max": 1000000,
+                    "min": 0,
+                    "Value": 340386
+                }
+            ]
+        }
+    ]
+}

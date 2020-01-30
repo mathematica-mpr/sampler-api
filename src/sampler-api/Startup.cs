@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Amazon.Runtime;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 using sampler_api.Repositories;
 using sampler_api.Services;
 
@@ -41,7 +35,9 @@ namespace sampler_api
             services.AddAWSService<Amazon.S3.IAmazonS3>();
 
             services.AddScoped<IChapterRepository, ChapterRepository>();
+            services.AddScoped<IMenuRepository, MenuRepository>();
             services.AddScoped<ISimulator, Simulator>();
+            services.AddScoped<IGraphRepository, GraphRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline

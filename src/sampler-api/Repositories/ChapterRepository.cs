@@ -18,17 +18,28 @@ namespace sampler_api.Repositories
             Simulator = simulator;
         }
 
-        public async Task<Chapter> GetInitChapter(int id)
+        public async Task<Chapter> GetInitChapter()
         {
-            Chapter chapter = await GetChapter(id);
-            SimulateParams simParams = GetSimulateParams(chapter.Inputs);
-            Simulate simulation = await Simulator.Run(simParams);
-            chapter.Graphs = GetChapterGraphsData(chapter.Graphs, simulation);
+            Chapter chapter = await GetChapter();
+
+            var menus = chapter.Menus;
+
+            for (int i = 0; i < menus.Count(); i++)
+            {
+                menus[i].GUID = Utils.GenerateGUID();
+                await InitChapterGraphs(menus[i], chapter.Graphs);
+            }
 
             return chapter;
         }
 
-        public async Task<Chapter> GetChapter(int id)
+        public async Task InitChapterGraphs(Menu menu, List<Graph> chapterGraphs)
+        {
+            // Simulate simulation = await Simulator.GetSimulate(menu);
+            // SetChapterGraphsData(chapterGraphs, simulation, menu.GUID);
+        }
+
+        public async Task<Chapter> GetChapter()
         {
             // TODO: this should be replaced when DynamoDB
             using (StreamReader r = new StreamReader("chapter.json"))
@@ -39,7 +50,8 @@ namespace sampler_api.Repositories
             }
         }
 
-        private List<ChapterGraph> GetChapterGraphsData(List<ChapterGraph> chapterGraphs, Simulate simulation)
+
+        private void SetChapterGraphsData(List<Graph> chapterGraphs, Simulate simulation, string guid)
         {
             chapterGraphs.ForEach(chapterGraph =>
             {
@@ -48,47 +60,32 @@ namespace sampler_api.Repositories
                     PropertyInfo prop = simulation.GetType().GetProperty(chapterGraph.Name);
                     if (prop != null)
                     {
-                        List<Coordinate> rawData = (List<Coordinate>)prop.GetValue(simulation);
-                        chapterGraph.Data = rawData;
+                        GraphItem newGraphItem = new GraphItem()
+                        {
+                            Coordinates = (List<Coordinate>)prop.GetValue(simulation),
+                            GUID = guid
+                        };
+
+                        chapterGraph.GraphItems.Add(newGraphItem);
                     }
                 }
                 else
                 {
-                    chapterGraph.Graphs = GetChapterGraphsData(chapterGraph.Graphs, simulation);
+                    SetChapterGraphsData(chapterGraph.Graphs, simulation, guid);
                 }
             });
 
-            return chapterGraphs;
         }
 
-        private SimulateParams GetSimulateParams(List<ChapterInput> chapterInputs)
+
+        public async Task<List<Graph>> UpdateGraphs(SimulateParams simulateParams, List<Graph> chapterGraphs)
         {
-            SimulateParams parentParams = new SimulateParams();
-            SimulateParams childParams = new SimulateParams();
 
-            chapterInputs.ForEach(chapterInput =>
-            {
-                if (chapterInput.Inputs == null)
-                {
-                    PropertyInfo prop = parentParams.GetType().GetProperty(chapterInput.Name);
-                    prop.SetValue(parentParams, chapterInput.Init.ToString());
-                }
-                else
-                {
-                    childParams = GetSimulateParams(chapterInput.Inputs);
-                }
-            });
+            // Simulate simulation = await Simulator.Run(simulateParams);
+            // chapter.Graphs = GetChapterGraphsData(chapter.Graphs, simulation);
+            // return chapter;
 
-            SimulateParams combineParams = Utils.Combine<SimulateParams>(parentParams, childParams);
-            return combineParams;
-        }
-
-        public async Task<Chapter> GetUpdatedChapter(int id, SimulateParams simulateParams)
-        {
-            Chapter chapter = await GetChapter(id);
-            Simulate simulation = await Simulator.Run(simulateParams);
-            chapter.Graphs = GetChapterGraphsData(chapter.Graphs, simulation);
-            return chapter;
+            return null;
         }
 
     }

@@ -5,6 +5,6 @@ namespace sampler_api.Services
 {
     public interface ISimulator
     {
-        Task<Simulate> Run(SimulateParams simulateParams);
+        Task<Simulate> GetSimulate(SimulateParams simulateParams);
     }
 }

@@ -7,13 +7,45 @@ using Amazon.Lambda;
 using Amazon.Lambda.APIGatewayEvents;
 using Amazon.Lambda.Model;
 using Newtonsoft.Json;
+using sampler_api.Helpers;
 using sampler_api.Models;
 
 namespace sampler_api.Services
 {
     public class Simulator : ISimulator
     {
-        public async Task<Simulate> Run(SimulateParams simulateParams)
+        public async Task<Simulate> GetSimulate(SimulateParams simulateParams)
+        {
+            Simulate simulation = await Run(simulateParams);
+            return simulation;
+        }
+
+        // TODO: Remove once proved useless
+        private SimulateParams GetSimulateParams(List<Input> chapterInputs, string guid)
+        {
+            SimulateParams parentParams = new SimulateParams();
+            SimulateParams childParams = new SimulateParams();
+
+            chapterInputs.ForEach(chapterInput =>
+            {
+                if (chapterInput.Inputs == null)
+                {
+                    PropertyInfo prop = parentParams.GetType().GetProperty(chapterInput.Name);
+                    prop.SetValue(parentParams, chapterInput.Value.ToString());
+                }
+                else
+                {
+                    childParams = GetSimulateParams(chapterInput.Inputs, guid);
+                }
+            });
+
+            SimulateParams combineParams = Utils.Combine<SimulateParams>(parentParams, childParams);
+
+            return combineParams;
+        }
+
+
+        private async Task<Simulate> Run(SimulateParams simulateParams)
         {
             using (var client = new AmazonLambdaClient(RegionEndpoint.USEast2))
             {
@@ -31,7 +63,7 @@ namespace sampler_api.Services
 
                 var request = new InvokeRequest
                 {
-                    FunctionName = "simulate",
+                    FunctionName = "simulateTesting",
                     Payload = JsonConvert.SerializeObject(apirequest)
                 };
 

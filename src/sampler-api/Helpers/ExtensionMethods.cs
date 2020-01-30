@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Reflection;
 using sampler_api.Models;
@@ -18,7 +19,8 @@ namespace sampler_api.Helpers
                         GraphItem newGraphItem = new GraphItem()
                         {
                             Coordinates = (List<Coordinate>)prop.GetValue(simulation),
-                            GUID = guid
+                            GUID = guid,
+                            TimeStamp = DateTime.Now.Ticks
                         };
 
                         chapterGraph.GraphItems.Add(newGraphItem);

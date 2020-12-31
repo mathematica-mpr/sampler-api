@@ -164,85 +164,260 @@
                     "order": 0,
                     "name": "TruePos",
                     "type": "LineGraph",
-                    "content": "<b>True Positives:</b> Distribution of the number of actual positive observations correctly predicted as positive."
+                    "data": [
+                        {
+                            "title": "Definition",
+                            "order": 0,
+                            "name": "TruePosDef",
+                            "type": "LineGraph",
+                            "content": "<b>True Positives:</b> Distribution of the number of actual positive observations correctly predicted as positive."
+                        },
+                        {
+                            "title": "Comparison",
+                            "order": 1,
+                            "name": "TruePosComp",
+                            "type": "LineGraph",
+                            "content": "<b>True Positives:</b> Distribution of the number of actual positive observations correctly predicted as positive."
+                        }
+                    ]
                 },
                 {
                     "title": "FP",
                     "order": 1,
                     "name": "FalPos",
                     "type": "LineGraph",
-                    "content": "<b>False Positives:</b> Distribution of the number of negative observations incorrectly predicted as positive."
+                    "data": [
+                        {
+                            "title": "Definition",
+                            "order": 0,
+                            "name": "TruePosDef",
+                            "type": "LineGraph",
+                            "content": "<b>True Positives:</b> Distribution of the number of actual positive observations correctly predicted as positive."
+                        },
+                        {
+                            "title": "Comparison",
+                            "order": 1,
+                            "name": "TruePosComp",
+                            "type": "LineGraph",
+                            "content": "<b>True Positives:</b> Distribution of the number of actual positive observations correctly predicted as positive."
+                        }
+                    ]
                 },
                 {
                     "title": "FN",
                     "order": 2,
                     "name": "FalNeg",
                     "type": "line",
-                    "content": "<b>False Negatives:</b> Distribution of the number of positive observations incorrectly predicted as negative."
+                    "data": [
+                        {
+                            "title": "Definition",
+                            "order": 0,
+                            "name": "TruePosDef",
+                            "type": "LineGraph",
+                            "content": "<b>True Positives:</b> Distribution of the number of actual positive observations correctly predicted as positive."
+                        },
+                        {
+                            "title": "Comparison",
+                            "order": 1,
+                            "name": "TruePosComp",
+                            "type": "LineGraph",
+                            "content": "<b>True Positives:</b> Distribution of the number of actual positive observations correctly predicted as positive."
+                        }
+                    ]              
                 },
                 {
                     "title": "TN",
                     "order": 3,
                     "name": "TrueNeg",
                     "type": "LineGraph",
-                    "content": "<b>True Negatives:</b> Distribution of the number of negative observations correctly predicted as negative."
+                    "data": [
+                        {
+                            "title": "Definition",
+                            "order": 0,
+                            "name": "TruePosDef",
+                            "type": "LineGraph",
+                            "content": "<b>True Positives:</b> Distribution of the number of actual positive observations correctly predicted as positive."
+                        },
+                        {
+                            "title": "Comparison",
+                            "order": 1,
+                            "name": "TruePosComp",
+                            "type": "LineGraph",
+                            "content": "<b>True Positives:</b> Distribution of the number of actual positive observations correctly predicted as positive."
+                        }
+                    ]                
                 },
                 {
                     "title": "FNR",
                     "order": 4,
                     "name": "Fnr",
                     "type": "line",
-                    "content": "<b>False Negative Rate:</b> Distribution of the proportion of actual positive observations that are predicted incorrectly  <br> <br> P[d=0|Y=1]"
+                    "data": [
+                        {
+                            "title": "Definition",
+                            "order": 0,
+                            "name": "TruePosDef",
+                            "type": "LineGraph",
+                            "content": "<b>True Positives:</b> Distribution of the number of actual positive observations correctly predicted as positive."
+                        },
+                        {
+                            "title": "Comparison",
+                            "order": 1,
+                            "name": "TruePosComp",
+                            "type": "LineGraph",
+                            "content": "<b>True Positives:</b> Distribution of the number of actual positive observations correctly predicted as positive."
+                        }
+                    ]                
                 },
                 {
                     "title": "FPR",
                     "order": 5,
                     "name": "Fpr",
                     "type": "LineGraph",
-                    "content": "<b>False Positive Rate:</b> Distribution of the proportion of actual negative observations that are predicted correctly <br> <br> P[d=1|Y=0]"
+                    "data": [
+                        {
+                            "title": "Definition",
+                            "order": 0,
+                            "name": "TruePosDef",
+                            "type": "LineGraph",
+                            "content": "<b>True Positives:</b> Distribution of the number of actual positive observations correctly predicted as positive."
+                        },
+                        {
+                            "title": "Comparison",
+                            "order": 1,
+                            "name": "TruePosComp",
+                            "type": "LineGraph",
+                            "content": "<b>True Positives:</b> Distribution of the number of actual positive observations correctly predicted as positive."
+                        }
+                    ]                
                 },
                 {
                     "title": "PPV (Precision)",
                     "order": 6,
                     "name": "PPV",
                     "type": "LineGraph",
-                    "content": "<b>Positive Predictive Value (Precision):</b> Distribution of the proportion of positive predictions that are actual positive observations. <br> <br> P[Y=1|d=1]"
+                    "data": [
+                        {
+                            "title": "Definition",
+                            "order": 0,
+                            "name": "TruePosDef",
+                            "type": "LineGraph",
+                            "content": "<b>True Positives:</b> Distribution of the number of actual positive observations correctly predicted as positive."
+                        },
+                        {
+                            "title": "Comparison",
+                            "order": 1,
+                            "name": "TruePosComp",
+                            "type": "LineGraph",
+                            "content": "<b>True Positives:</b> Distribution of the number of actual positive observations correctly predicted as positive."
+                        }
+                    ]         
                 },
                 {
                     "title": "NPV",
                     "order": 7,
                     "name": "NPV",
                     "type": "LineGraph",
-                    "content": "<b>Negative Predictive Value:</b> Distribution of the proportion negative predictions that are actually negative observations. <br> <br> P[Y=0|d=0]"
-                },
+                    "data": [
+                        {
+                            "title": "Definition",
+                            "order": 0,
+                            "name": "TruePosDef",
+                            "type": "LineGraph",
+                            "content": "<b>True Positives:</b> Distribution of the number of actual positive observations correctly predicted as positive."
+                        },
+                        {
+                            "title": "Comparison",
+                            "order": 1,
+                            "name": "TruePosComp",
+                            "type": "LineGraph",
+                            "content": "<b>True Positives:</b> Distribution of the number of actual positive observations correctly predicted as positive."
+                        }
+                    ]                },
                 {
                     "title": "TPR (Recall/Sensitivity)",
                     "order": 8,
                     "name": "Sens",
                     "type": "LineGraph",
-                    "content": "<b>True Positive Rate (Recall/Sensitivity):</b> Distribution of the proportion of actual positive observations that are predicted correctly. <br> <br> P[d=1|Y=1]"
-                },
+                    "data": [
+                        {
+                            "title": "Definition",
+                            "order": 0,
+                            "name": "TruePosDef",
+                            "type": "LineGraph",
+                            "content": "<b>True Positives:</b> Distribution of the number of actual positive observations correctly predicted as positive."
+                        },
+                        {
+                            "title": "Comparison",
+                            "order": 1,
+                            "name": "TruePosComp",
+                            "type": "LineGraph",
+                            "content": "<b>True Positives:</b> Distribution of the number of actual positive observations correctly predicted as positive."
+                        }
+                    ]                },
                 {
                     "title": "TNR (Specificity)",
                     "order": 9,
                     "name": "Spec",
                     "type": "LineGraph",
-                    "content": "<b>True Negative Rate (Specificity):</b> Distribution of the proportion of actual negative observations that are predicted incorrectly <br> <br> P[d=0|Y=0]"
-                },
+                    "data": [
+                        {
+                            "title": "Definition",
+                            "order": 0,
+                            "name": "TruePosDef",
+                            "type": "LineGraph",
+                            "content": "<b>True Positives:</b> Distribution of the number of actual positive observations correctly predicted as positive."
+                        },
+                        {
+                            "title": "Comparison",
+                            "order": 1,
+                            "name": "TruePosComp",
+                            "type": "LineGraph",
+                            "content": "<b>True Positives:</b> Distribution of the number of actual positive observations correctly predicted as positive."
+                        }
+                    ]                },
                 {
                     "title": "FDR",
                     "order": 10,
                     "name": "Fdr",
                     "type": "LineGraph",
-                    "content": "<b>False Discovery Rate:</b> Distribution of the proportion of positive predictions incorrectly that are actually negative observations. <br> <br> P[Y=0|d=1]"
-                },
+                    "data": [
+                        {
+                            "title": "Definition",
+                            "order": 0,
+                            "name": "TruePosDef",
+                            "type": "LineGraph",
+                            "content": "<b>True Positives:</b> Distribution of the number of actual positive observations correctly predicted as positive."
+                        },
+                        {
+                            "title": "Comparison",
+                            "order": 1,
+                            "name": "TruePosComp",
+                            "type": "LineGraph",
+                            "content": "<b>True Positives:</b> Distribution of the number of actual positive observations correctly predicted as positive."
+                        }
+                    ]                },
                 {
                     "title": "FOR",
                     "order": 11,
                     "name": "For",
                     "type": "LineGraph",
-                    "content": "<b>False Omission Rate: </b> Distribution of the proportion negative predictions that are actually positive observations. <br> <br> P[Y=1|d=0]"
-                }
+                    "data": [
+                        {
+                            "title": "Definition",
+                            "order": 0,
+                            "name": "TruePosDef",
+                            "type": "LineGraph",
+                            "content": "<b>True Positives:</b> Distribution of the number of actual positive observations correctly predicted as positive."
+                        },
+                        {
+                            "title": "Comparison",
+                            "order": 1,
+                            "name": "TruePosComp",
+                            "type": "LineGraph",
+                            "content": "<b>True Positives:</b> Distribution of the number of actual positive observations correctly predicted as positive."
+                        }
+                    ]                }
             ]
         }
     ]

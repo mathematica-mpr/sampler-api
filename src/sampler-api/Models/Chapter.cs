@@ -5,11 +5,16 @@ namespace sampler_api.Models
 
     public class BaseElement
     {
+        public BaseElement()
+        {
+            Data = new List<BaseElement>();
+        }
         public string Name { get; set; }
         public string Title { get; set; }
         public int Order { get; set; }
         public string Type { get; set; }
         public string Content { get; set; }
+        public List<BaseElement> Data { get; set; }
     }
 
     public class Chapter : BaseElement

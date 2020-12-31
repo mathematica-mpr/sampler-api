@@ -11,7 +11,7 @@
     "configuration": "Release",
     "framework": "netcoreapp2.1",
     "template": "src/sampler-api/serverless.template",
-    "s3-bucket": "sampler-app-api",
-    "stack-name": "sampler-api",
+    "s3-bucket": "sampler-app-api-dev",
+    "stack-name": "sampler-api-dev",
     "cloudformation-role": "arn:aws:iam::059577207107:role/cfn-s3-role"
 }

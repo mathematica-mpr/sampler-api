@@ -14,7 +14,7 @@
     "AspNetCoreFunction": {
       "Type": "AWS::Serverless::Function",
       "Properties": {
-        "FunctionName" : "sampler-api"
+        "FunctionName" : "sampler-api-dev"
         "Handler": "sampler-api::sampler_api.LambdaEntryPoint::FunctionHandlerAsync",
         "Runtime": "dotnetcore2.1",
         "CodeUri": "",
